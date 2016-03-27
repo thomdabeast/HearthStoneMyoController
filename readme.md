@@ -9,18 +9,18 @@ your fingers to unlock it again.
 
 ## How-to: ##
 ### Controls ###
-Left-click: 	fist
-Right-click: 	waveIn
-escape: 		waveOut
-Center mouse:	fingersSpread
+* Left-click: 	fist
+* Right-click: 	waveIn
+* escape: 		waveOut
+* Center mouse:	fingersSpread
 
 ## Dependencies: ##
-### NodeJS ###
-### myoJS ### (npm install -g myo)
-### Myo Connect ###
+* NodeJS
+* myoJS (npm install -g myo)
+* Myo Connect
 
 ## Setup ##
-First, you need to set HearthStone to debug mode by copying the log.config file to C:\Users\[USERNAME]\AppData\Local\Blizzard\HearthStone.
-Next, connect and calibrate your Myo and then double-click on HearthStoneController.myo to install to Myo Connect.
-Next, open a command prompt in this directory and run the command 'node app.js'
-Then, open HearthStone and enjoy!!
+* you need to set HearthStone to debug mode by copying the log.config file to C:\Users\[USERNAME]\AppData\Local\Blizzard\HearthStone\.
+* connect and calibrate your Myo and then double-click on HearthStoneController.myo to install to Myo Connect.
+* open a command prompt in this directory and run the command 'node app.js'
+* open HearthStone and enjoy!! Remember to double-tap fingers to unlock!
