@@ -9,10 +9,10 @@ your fingers to unlock it again.
 
 ## How-to: ##
 ### Controls ###
-### Left-click: 	fist ###
-### Right-click: 	waveIn ###
-### escape: 		waveOut ###
-### Center mouse:	fingersSpread ###
+Left-click: 	fist
+Right-click: 	waveIn
+escape: 		waveOut
+Center mouse:	fingersSpread
 
 ## Dependencies: ##
 ### NodeJS ###
