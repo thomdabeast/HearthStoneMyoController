@@ -1,0 +1,86 @@
+scriptId = 'com.thomdabeast.HearthStoneControl'  
+    scriptTitle = "HearthStone Control"
+
+    LOCK_THRESHOLD = 1600  
+    timeSinceLastPose = 0
+
+    function notifyUser(edge)  
+        if (edge == "down") then
+            myo.notifyUserAction()
+        end
+    end
+
+    function leftClick(edge)  
+        --notifyUser(edge)
+        myo.mouse("left",edge)
+    end
+	
+	function rightClick(edge)
+		myo.mouse("right",edge)
+	end
+
+    function escape(edge)  
+        --notifyUser(edge)
+        myo.keyboard("escape",edge)
+    end
+	function unlockMyo(edge)
+		myo.unlock("hold")
+        myo.controlMouse(true)
+	end
+	
+    function lockMyo(edge)  
+        if (myo.getTimeMilliseconds() - timeSinceLastPose > LOCK_THRESHOLD) then
+            myo.controlMouse(false)
+            myo.lock()
+        end
+    end
+	
+	function positionMouse(edge)
+		myo.centerMousePosition()
+	end
+
+     STANDARD_BINDINGS = {
+        fist            = leftClick,
+		fingersSpread = positionMouse,
+        waveOut   = escape,
+		waveIn = rightClick,
+        doubleTap       = unlockMyo
+    }
+    --STANDARD_BINDINGS = true
+
+    bindings = STANDARD_BINDINGS
+
+    function onForegroundWindowChange(app, title)
+        --myo.debug(app)
+
+        return app == "Hearthstone.exe"
+    end
+
+    function activeAppName()  
+        return scriptTitle
+    end
+
+    function onUnlock()  
+        myo.unlock("hold")
+        myo.controlMouse(true)
+    end
+	
+	function onLock()
+		myo.unlock("hold")
+		myo.controlMouse(true)
+	end
+	
+
+    function onPoseEdge(pose, edge)  
+        --pose = conditionallySwapWave(pose)
+        --myo.debug("onPoseEdge: " .. pose .. ": " .. edge)
+        fn = bindings[pose]
+        if fn then
+            keyEdge = edge == "off" and "up" or "down"
+            fn(keyEdge)
+        end
+
+        if (pose ~= "rest" and edge == "off") then
+            timeSinceLastPose = myo.getTimeMilliseconds()
+        end
+    end
